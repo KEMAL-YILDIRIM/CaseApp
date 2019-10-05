@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleApp.Configuration;
+using System;
 
 namespace ConsoleApp
 {
@@ -10,11 +11,11 @@ namespace ConsoleApp
         {
             _serviceProvider = AutofacSetup.RegisterServices(_serviceProvider);
 
-            var calculateTempratures = _serviceProvider.GetService<ICalculateTempratures>();
+            //var calculateTempratures = _serviceProvider.GetService<ICalculateTempratures>();
 
             try
             {
-                var result = calculateTempratures.Execute();
+                //var result = calculateTempratures.Execute();
             }
             catch (Exception e)
             {

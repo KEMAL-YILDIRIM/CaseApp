@@ -24,21 +24,10 @@ namespace BusinessTests.Logic
             var instance = GetLetterInstance();
 
             // Act
-            var result = instance.FindNumberOfRepetations<Char>(text.ToCharArray(), 'e');
+            var result = instance.FindNumberOfRepetations(text.ToCharArray(), 'e');
 
             // Assert
             Assert.AreEqual(result, 10);
-        }
-
-        [Test]
-        public void FailGivenWrongTypeListThrowException()
-        {
-            // Arrange
-            int[] list = { 1, 2, 3, 4 };
-            var instance = GetLetterInstance();
-
-            // Assert
-            Assert.Throws<CountExceptions>(() => instance.FindNumberOfRepetations<int>(list, 2));
         }
 
         [Test]
@@ -49,7 +38,7 @@ namespace BusinessTests.Logic
             var instance = GetLetterInstance();
 
             // Assert
-            Assert.Throws<CountExceptions>(() => instance.FindNumberOfRepetations<Char>(text.ToCharArray(), 'e'));
+            Assert.Throws<CountExceptions>(() => instance.FindNumberOfRepetations(text.ToCharArray(), 'e'));
         }
 
         [Test]
@@ -60,7 +49,7 @@ namespace BusinessTests.Logic
             var instance = GetLetterInstance();
 
             // Assert
-            Assert.Throws<CountExceptions>(() => instance.FindNumberOfRepetations<Char>(text.ToCharArray(), new Char()));
+            Assert.Throws<CountExceptions>(() => instance.FindNumberOfRepetations(text.ToCharArray(), new Char()));
         }
     }
 }

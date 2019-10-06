@@ -1,5 +1,10 @@
-﻿using ConsoleApp.Configuration;
-using System;
+﻿using System;
+
+using ConsoleApp.Configuration;
+using ConsoleApp.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
+
+using Serilog;
 
 namespace ConsoleApp
 {
@@ -11,18 +16,24 @@ namespace ConsoleApp
         {
             _serviceProvider = AutofacSetup.RegisterServices(_serviceProvider);
 
-            //var calculateTempratures = _serviceProvider.GetService<ICalculateTempratures>();
+            var calculate = _serviceProvider.GetService<ICalculate>();
 
             try
             {
-                //var result = calculateTempratures.Execute();
+                var result = calculate.Execute();
             }
             catch (Exception e)
             {
-                // todo: It should be written in a log file and keep continue to program based on exception type.
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine(e.Message.ToString());
-                Console.WriteLine("Please restart the program.");
+                if (e.GetType().GetInterface("IApplicationException") != null)
+                {
+                    Console.WriteLine(e.Message);
+                }
+                else
+                {
+                    Log.Error(e, e.Message);
+                    Console.WriteLine("An unexpected error occured please refer to your Administrator.");
+                }
             }
 
             Console.ReadKey();

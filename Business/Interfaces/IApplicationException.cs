@@ -1,6 +1,6 @@
-﻿namespace Business.Exceptions
+﻿namespace Business.Interfaces
 {
-    internal interface IApplicationException
+    public interface IApplicationException
     {
     }
 }

@@ -8,7 +8,7 @@ namespace Business.Logic
     /// <summary>
     /// The letter class.
     /// </summary>
-    public class Letter : Count
+    public class Letter : Count<Char>
     {
         /// <summary>
         /// Calculate the number of repetations of a char within a char array.
@@ -17,12 +17,9 @@ namespace Business.Logic
         /// <param name="items">Char[]</param>
         /// <param name="item">Char</param>
         /// <returns></returns>
-        public override int FindNumberOfRepetations<TypeItem>(in IEnumerable<TypeItem> items, in TypeItem item)
+        public override int FindNumberOfRepetations(in IEnumerable<Char> items, in Char item)
         {
-            if (item.GetType().Name != "Char")
-                throw new CountExceptions("Given item is not a char type.");
-
-            var letter = Convert.ToChar(item);
+            var letter = item;
             var givenText = new string(items as Char[]);
 
             if (string.IsNullOrWhiteSpace(givenText))

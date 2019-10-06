@@ -1,5 +1,7 @@
 ﻿using System;
 
+using Business.Interfaces;
+
 namespace Business.Exceptions
 {
     public class OperationException : Exception, IApplicationException

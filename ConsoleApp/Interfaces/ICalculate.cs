@@ -1,6 +1,6 @@
 ﻿namespace ConsoleApp.Interfaces
 {
-    public interface ICalculateTempratures
+    public interface ICalculate
     {
         bool Execute();
     }

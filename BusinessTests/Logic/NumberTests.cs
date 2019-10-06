@@ -24,7 +24,7 @@ namespace BusinessTests.Logic
             var instance = GetNumberInstance();
 
             // Act
-            var result = instance.FindNumberOfRepetations<int>(list, 1);
+            var result = instance.FindNumberOfRepetations(list, 1);
 
             // Assert
             Assert.AreEqual(result, 8);
@@ -38,18 +38,7 @@ namespace BusinessTests.Logic
             var instance = GetNumberInstance();
 
             // Assert
-            Assert.Throws<CountExceptions>(() => instance.FindNumberOfRepetations<int>(list, 2));
-        }
-
-        [Test]
-        public void FailGivenWrongTypeListThrowException()
-        {
-            // Arrange
-            string text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eanean sodales justo et Enim ornare, a congue lacus commodo.";
-            var instance = GetNumberInstance();
-
-            // Assert
-            Assert.Throws<CountExceptions>(() => instance.FindNumberOfRepetations<Char>(text.ToCharArray(), new Char()));
+            Assert.Throws<CountExceptions>(() => instance.FindNumberOfRepetations(list, 2));
         }
     }
 }

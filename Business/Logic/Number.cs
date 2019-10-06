@@ -8,7 +8,7 @@ namespace Business.Logic
     /// <summary>
     /// The number class
     /// </summary>
-    public class Number : Count
+    public class Number : Count<int>
     {
         /// <summary>
         /// Calculate the number of repetations of a int within a int array.
@@ -17,11 +17,8 @@ namespace Business.Logic
         /// <param name="items">Int32</param>
         /// <param name="item">Int32</param>
         /// <returns></returns>
-        public override int FindNumberOfRepetations<TypeItem>(in IEnumerable<TypeItem> items, in TypeItem item)
+        public override int FindNumberOfRepetations(in IEnumerable<int> items, in int item)
         {
-            if (item.GetType().Name != "Int32")
-                throw new CountExceptions("Given item is not a number.");
-
             var givenNumbers = items as Int32[];
 
             if (givenNumbers.Length == 0)

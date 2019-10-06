@@ -16,7 +16,7 @@ namespace Business.Logic
             }
             catch (System.Exception)
             {
-                throw new CountExceptions(
+                throw new OperationException(
                     string.Format("Sum operation has been failed for {0} and {1}."
                     , parameter1
                     , parameter2)

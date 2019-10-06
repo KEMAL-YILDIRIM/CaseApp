@@ -21,16 +21,16 @@ namespace Business.Logic
         public int FindNumberOfRepetations<TypeItem>(IEnumerable<TypeItem> items, TypeItem item) where TypeItem : struct
         {
             if (item.GetType().Name != "Char")
-                throw new LetterExceptions("Given item is not a char type.");
+                throw new CountExceptions("Given item is not a char type.");
 
             var letter = Convert.ToChar(item);
             var givenText = new string(items as Char[]);
 
             if (string.IsNullOrWhiteSpace(givenText))
-                throw new LetterExceptions("Given text is not valid to find the containing letter.");
+                throw new CountExceptions("Given text is not valid to find the containing letter.");
 
             if (!char.IsLetterOrDigit(letter))
-                throw new LetterExceptions("Given letter is not valid to search inside a text.");
+                throw new CountExceptions("Given letter is not valid to search inside a text.");
 
             int repetation = 0;
 

@@ -5,6 +5,7 @@ namespace Business.Logic
 {
     public class SumInt : IOperation<int, int>
     {
+        // In case of adding new operations it shows the type of operation
         public string GetOperatorType { get => "+"; }
 
         public int Operate(in int parameter1, in int parameter2)

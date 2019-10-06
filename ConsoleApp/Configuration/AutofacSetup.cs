@@ -1,7 +1,15 @@
-﻿using Autofac;
+﻿using System;
+
+using Autofac;
 using Autofac.Extensions.DependencyInjection;
+
+using Business.Interfaces;
+using Business.Logic;
+
+using ConsoleApp.Interfaces;
+using ConsoleApp.Process;
+
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace ConsoleApp.Configuration
 {
@@ -12,7 +20,11 @@ namespace ConsoleApp.Configuration
             var collection = new ServiceCollection();
             var builder = new ContainerBuilder();
 
-            //builder.RegisterType<AmbientTemperatureProcessor>().As<IAmbientTemperatureProcessor>();
+            builder.RegisterType<Calculate>().As<ICalculate>();
+            builder.RegisterType<Letter>().As<ICount<char>>();
+            builder.RegisterType<Number>().As<ICount<int>>();
+            builder.RegisterType<SumInt>().As<IOperation<int, int>>();
+            builder.RegisterType<Calculate>().As<ICalculate>();
 
             builder.Populate(collection);
 

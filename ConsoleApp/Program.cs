@@ -2,6 +2,7 @@
 
 using ConsoleApp.Configuration;
 using ConsoleApp.Interfaces;
+
 using Microsoft.Extensions.DependencyInjection;
 
 using Serilog;
@@ -20,7 +21,13 @@ namespace ConsoleApp
 
             try
             {
-                var result = calculate.Execute();
+                bool run = true;
+                while (run)
+                {
+                    run = calculate.Execute();
+                    Console.WriteLine("Press ESC to exit or any other key to continue.");
+                    if (Console.ReadKey().Key == ConsoleKey.Escape) run = false;
+                }
             }
             catch (Exception e)
             {
@@ -36,7 +43,6 @@ namespace ConsoleApp
                 }
             }
 
-            Console.ReadKey();
             AutofacSetup.DisposeServices(_serviceProvider);
         }
     }

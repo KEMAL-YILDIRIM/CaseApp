@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 using Business.Exceptions;
 
@@ -19,9 +19,7 @@ namespace Business.Logic
         /// <returns></returns>
         public override int FindNumberOfRepetations(in IEnumerable<int> items, in int item)
         {
-            var givenNumbers = items as Int32[];
-
-            if (givenNumbers.Length == 0)
+            if (items.Count() == 0)
                 throw new CountExceptions("Given numbers are not valid.");
 
             return base.FindNumberOfRepetations(items, item);

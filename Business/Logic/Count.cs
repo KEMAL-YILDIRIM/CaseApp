@@ -6,9 +6,19 @@ using Business.Interfaces;
 
 namespace Business.Logic
 {
+    /// <summary>
+    /// Base class for count behaviour.
+    /// </summary>
     public abstract class Count : ICount
     {
-        public virtual int FindNumberOfRepetations<TypeItem>(IEnumerable<TypeItem> items, TypeItem item) where TypeItem : struct
+        /// <summary>
+        /// Calculate the number of repetations of a type within an array of that type.
+        /// </summary>
+        /// <typeparam name="TypeItem"></typeparam>
+        /// <param name="items"></param>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        public virtual int FindNumberOfRepetations<TypeItem>(in IEnumerable<TypeItem> items, in TypeItem item) where TypeItem : struct
         {
             int repetation = 0;
 

@@ -20,14 +20,14 @@ namespace BusinessTests.Logic
         public void PassGivenNumbersReturnsValidNumberOfRepeats()
         {
             // Arrange
-            int[] list = { 1, 2, 3, 4, 2, 2, 2, 2, 22, 2, 2, 2, 2, 4, 2 };
+            int[] list = { 1, 7, 2, 7, 2, 8, 3, 8, 1, 1, 9, 1, 9, 1, 9, 2, 9, 8, 3, 8, 2, 9, 9, 1, 1, 1 };
             var instance = GetNumberInstance();
 
             // Act
-            var result = instance.FindNumberOfRepetations<int>(list, 2);
+            var result = instance.FindNumberOfRepetations<int>(list, 1);
 
             // Assert
-            Assert.AreEqual(result, 10);
+            Assert.AreEqual(result, 8);
         }
 
         [Test]

@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 
 using Business.Exceptions;
-using Business.Interfaces;
 
 namespace Business.Logic
 {
     /// <summary>
     /// The letter class.
     /// </summary>
-    public class Letter : ICount
+    public class Letter : Count
     {
         /// <summary>
         /// Calculate the number of repetations of a char within a char array.
@@ -18,7 +17,7 @@ namespace Business.Logic
         /// <param name="items">Char[]</param>
         /// <param name="item">Char</param>
         /// <returns></returns>
-        public int FindNumberOfRepetations<TypeItem>(IEnumerable<TypeItem> items, TypeItem item) where TypeItem : struct
+        public override int FindNumberOfRepetations<TypeItem>(in IEnumerable<TypeItem> items, in TypeItem item)
         {
             if (item.GetType().Name != "Char")
                 throw new CountExceptions("Given item is not a char type.");

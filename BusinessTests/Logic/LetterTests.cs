@@ -38,7 +38,7 @@ namespace BusinessTests.Logic
             var instance = GetLetterInstance();
 
             // Assert
-            Assert.Throws<CountExceptions>(() => instance.FindNumberOfRepetations(text.ToCharArray(), 'e'));
+            Assert.Throws<CountException>(() => instance.FindNumberOfRepetations(text.ToCharArray(), 'e'));
         }
 
         [Test]
@@ -49,7 +49,7 @@ namespace BusinessTests.Logic
             var instance = GetLetterInstance();
 
             // Assert
-            Assert.Throws<CountExceptions>(() => instance.FindNumberOfRepetations(text.ToCharArray(), new Char()));
+            Assert.Throws<CountException>(() => instance.FindNumberOfRepetations(text.ToCharArray(), new Char()));
         }
     }
 }

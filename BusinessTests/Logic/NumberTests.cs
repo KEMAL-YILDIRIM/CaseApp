@@ -38,7 +38,7 @@ namespace BusinessTests.Logic
             var instance = GetNumberInstance();
 
             // Assert
-            Assert.Throws<CountExceptions>(() => instance.FindNumberOfRepetations(list, 2));
+            Assert.Throws<CountException>(() => instance.FindNumberOfRepetations(list, 2));
         }
     }
 }

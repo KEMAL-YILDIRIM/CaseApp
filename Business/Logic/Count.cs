@@ -23,7 +23,7 @@ namespace Business.Logic
             int repetation = 0;
 
             if (items == null && !items.Any())
-                throw new CountExceptions("Given list of items is not valid to find the containing item.");
+                throw new CountException("Given list of items is not valid to find the containing item.");
 
             int length = items.Count();
             for (int i = length - 1; i >= 0; i--)

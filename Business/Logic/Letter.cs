@@ -23,10 +23,10 @@ namespace Business.Logic
             var givenText = new string(items as Char[]);
 
             if (string.IsNullOrWhiteSpace(givenText))
-                throw new CountExceptions("Given text is not valid to find the containing letter.");
+                throw new CountException("Given text is not valid to find the containing letter.");
 
             if (!char.IsLetterOrDigit(letter))
-                throw new CountExceptions("Given letter is not valid to search inside a text.");
+                throw new CountException("Given letter is not valid to search inside a text.");
 
             int repetation = 0;
 

@@ -1,12 +1,21 @@
 ﻿using System;
 
+using Autofac.Features.Indexed;
+
 using ConsoleApp.Interfaces;
 
+using static ConsoleApp.Configuration.AutofacSetup;
 
 namespace ConsoleApp.Process
 {
     public class Calculate : ICalculate
     {
+        public IIndex<Key, IRead> _readIndexedInstances;
+        public Calculate(IIndex<Key, IRead> readIndexedInstances)
+        {
+            _readIndexedInstances = readIndexedInstances;
+        }
+
         public bool Execute()
         {
             ConsoleMenu.Load();
@@ -16,11 +25,11 @@ namespace ConsoleApp.Process
             Console.WriteLine();
 
             if (selection == ConsoleKey.D1 || selection == ConsoleKey.NumPad1)
-                new ReadTextCalculation().Execute();
+                _readIndexedInstances[Key.ReadTextForRepetation].Execute();
             else if (selection == ConsoleKey.D2 || selection == ConsoleKey.NumPad2)
-                new ReadNumberCalculation().Execute();
+                _readIndexedInstances[Key.ReadNumbersForRepetation].Execute();
             else if (selection == ConsoleKey.D3 || selection == ConsoleKey.NumPad3)
-                new ReadOperationCalculation().Execute();
+                _readIndexedInstances[Key.ReadNumbersForCalculation].Execute();
             else
                 Execute();
 

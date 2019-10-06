@@ -15,8 +15,11 @@ namespace ConsoleApp
 
         static void Main(string[] args)
         {
+            // Register instances
             _serviceProvider = AutofacSetup.RegisterServices(_serviceProvider);
 
+
+            // Get starting point
             var calculate = _serviceProvider.GetService<ICalculate>();
 
             try
@@ -25,6 +28,9 @@ namespace ConsoleApp
                 while (run)
                 {
                     run = calculate.Execute();
+
+                    // Rerun until press esc
+                    Console.ForegroundColor = ConsoleColor.Blue;
                     Console.WriteLine("Press ESC to exit or any other key to continue.");
                     if (Console.ReadKey().Key == ConsoleKey.Escape) run = false;
                 }
@@ -32,13 +38,15 @@ namespace ConsoleApp
             catch (Exception e)
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                if (e.GetType().GetInterface("IApplicationException") != null)
+
+                var isCustomError = e.GetType().GetInterface("IApplicationException") != null;
+                if (isCustomError)
                 {
                     Console.WriteLine(e.Message);
                 }
                 else
                 {
-                    Log.Error(e, e.Message);
+                    Log.Error(e, e.StackTrace);
                     Console.WriteLine("An unexpected error occured please refer to your Administrator.");
                 }
             }

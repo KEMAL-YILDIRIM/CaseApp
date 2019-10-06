@@ -1,13 +1,21 @@
 ﻿using System;
 
+using Business.Interfaces;
 using Business.Logic;
 
 using ConsoleApp.Interfaces;
 
 namespace ConsoleApp.Process
 {
-    public class ReadTextCalculation : ICalculate
+    public class ReadTextForRepetation : IRead
     {
+        private ICount<char> _letter;
+
+        public ReadTextForRepetation(ICount<char> letter)
+        {
+            _letter = letter;
+        }
+
         public bool Execute()
         {
             Console.WriteLine("Please type the desired text and press Enter.");

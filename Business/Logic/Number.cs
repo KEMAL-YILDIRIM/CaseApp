@@ -20,7 +20,7 @@ namespace Business.Logic
         public override int FindNumberOfRepetations(in IEnumerable<int> items, in int item)
         {
             if (items.Count() == 0)
-                throw new CountExceptions("Given numbers are not valid.");
+                throw new CountException("Given numbers are not valid.");
 
             return base.FindNumberOfRepetations(items, item);
         }

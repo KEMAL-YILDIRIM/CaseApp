@@ -12,7 +12,7 @@ namespace ConsoleApp.Process
 Please select the process by pressing the number.
 
 1-) Find the repetation of a letter in a typed text.
-2-) Find the repetation of a number in a typed array of numbers.
+2-) Find the repetation of a figure in a typed number.
 3-) Find the result of an addition for two numbers.
 
 ");
